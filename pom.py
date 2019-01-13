@@ -1,4 +1,4 @@
-	#----------------------------------------------------------------------------#
+#----------------------------------------------------------------------------#
 #
 # 						Pomodoro timer draft
 #
@@ -12,6 +12,7 @@
 #### Import Libraries
 import time
 import sys
+import winsound # windows only for now
 #import os
 
 from datetime import datetime  as dt
@@ -25,9 +26,9 @@ sys.stdout.flush()
 #----------------------------------------------------------------------------#
 
 #### Cycle time
-Wcy_dur = 2 # Work
-Bcy_dur = 1 # Break
-LBcy_dur = 2 # Long break
+Wcy_dur = 25 # Work
+Bcy_dur = 5 # Break
+LBcy_dur = 5 # Long break
 
 #### Messages
 Wcy_mes1 = "Work cycle finished! Have a break."
@@ -46,10 +47,12 @@ start_ansYN = start_ansY + start_ansN
 def subcycle(dur, message):
 		t0 = dt.now()
 		ti = dt.now()
-		while ti < t0 + td(seconds=dur):
+		while ti < t0 + td(minutes=dur):
+		#while ti < t0 + td(seconds=dur):
+
 			ti = dt.now()
 		print(message)
-		#os.system("beep -f 555 -l 460")
+		winsound.Beep(550, 750)
 
 
 #----------------------------------------------------------------------------#
