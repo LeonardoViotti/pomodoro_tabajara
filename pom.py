@@ -27,7 +27,7 @@ sys.stdout.flush()
 
 #### Cycle time
 Wcy_dur = 25 # Work
-Bcy_dur = 7 # Break
+Bcy_dur = 5 # Break
 LBcy_dur = 20 # Long break
 
 #### Messages
@@ -64,7 +64,9 @@ def subcycle(dur, message):
 		while ti < t0 + td(minutes=dur):
 		#while ti < t0 + td(seconds=dur): # for testing
 			ti = dt.now()
-			SameLinePrint(t0 + td(seconds=dur) - ti)
+			SameLinePrint(t0 + td(minutes=dur) - ti)
+			#SameLinePrint(t0 + td(seconds=dur) - ti)
+
 		print(message)
 		winsound.Beep(550, 750)
 
@@ -73,30 +75,28 @@ def subcycle(dur, message):
 #### Work cycle
 #----------------------------------------------------------------------------#
 
-start_gb = input('Shall we start working? (Y/n) ').strip().lower()
+work_gb = input('Shall we start working? (Y/n) ').strip().lower()
 
-while start_gb not in start_ansYN:
+while work_gb not in start_ansYN:
 	print("Sorry, I didn't get that.")
 	start_gb = input('Shall we start working now? (Y/n) ')
 
-if start_gb in start_ansY:
+while work_gb in start_ansY:
 	print("Start working!")
-
-	# Repeat work subcycle and break 3x
+		# Repeat work subcycle and break 3x
 	for i in range(0,3):
 		# Work cycle
 		subcycle(Wcy_dur, Wcy_mes1)
-
-		# Break cycle
+			# Break cycle
 		subcycle(Bcy_dur, Bcy_mes)
-
 
 	# Last work cycle before long break
 	subcycle(Wcy_dur, Wcy_mes2)
-
 	# Long break!
 	subcycle(LBcy_dur, LBcy_mes)
+	
+	work_gb = input('Shall we continue working? (Y/n) ').strip().lower()
 
-else:
-	print("Ok, have fun!")
-	time.sleep(1)
+
+print("Ok, have fun!")
+time.sleep(1)
