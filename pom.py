@@ -66,7 +66,8 @@ def subcycle(dur, message):
 			ti = dt.now()
 			SameLinePrint(t0 + td(minutes=dur) - ti)
 			#SameLinePrint(t0 + td(seconds=dur) - ti)
-
+		
+		print(ti.time())
 		print(message)
 		winsound.Beep(550, 750)
 
@@ -79,6 +80,8 @@ work_gb = input('Shall we start working? (Y/n) ').strip().lower()
 
 while work_gb not in start_ansYN:
 	print("Sorry, I didn't get that.")
+	print(work_gb)
+
 	start_gb = input('Shall we start working now? (Y/n) ')
 
 while work_gb in start_ansY:
