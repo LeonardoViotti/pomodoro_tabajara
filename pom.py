@@ -27,7 +27,7 @@ sys.stdout.flush()
 
 #### Cycle time
 Wcy_dur = 25 # Work
-Bcy_dur = 5 # Break
+Bcy_dur = 7 # Break
 LBcy_dur = 20 # Long break
 
 #### Messages
@@ -77,6 +77,7 @@ def subcycle(dur, message):
 #----------------------------------------------------------------------------#
 
 work_gb = input('Shall we start working? (Y/n) ').strip().lower()
+cycle_count = 0
 
 while work_gb not in start_ansYN:
 	print("Sorry, I didn't get that.")
@@ -98,6 +99,15 @@ while work_gb in start_ansY:
 	# Long break!
 	subcycle(LBcy_dur, LBcy_mes)
 	
+	# Show cycle count
+	cycle_count += 1
+	if cycle_count == 1:
+		print("Congratulations! You have finished", format(cycle_count), "cycle.")
+	else:
+		print("Congratulations!", format(cycle_count), "cycles now!")
+
+	
+	print(cycle_count)
 	work_gb = input('Shall we continue working? (Y/n) ').strip().lower()
 
 
