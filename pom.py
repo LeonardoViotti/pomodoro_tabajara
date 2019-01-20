@@ -27,7 +27,7 @@ sys.stdout.flush()
 
 #### Cycle time
 Wcy_dur = 25 # Work
-Bcy_dur = 7 # Break
+Bcy_dur = 5 # Break
 LBcy_dur = 20 # Long break
 
 #### Messages
