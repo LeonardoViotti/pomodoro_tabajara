@@ -81,10 +81,16 @@ def thread_function():
 
         pause_gb = input('Pause?')
 
+def thread_function2():
+    subcycle(5, "worked?")
+
+
 if __name__ == "__main__":
     x = threading.Thread(target=thread_function)
     x.start()
-    subcycle(5, "worked?")
+
+    x2 = threading.Thread(target=thread_function2)
+    x2.start()
     #x.is_alive()
     # x.join()
-    
+
