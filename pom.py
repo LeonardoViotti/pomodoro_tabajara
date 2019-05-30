@@ -53,23 +53,23 @@ def backspace(n):
 
 def SameLinePrint(p):
     # print((b'\x08').decode(), end='')     # use \x08 char to go back
-	print(p, end='')
-	backspace(len(str(p)))   
+    print(p, end='')
+    backspace(len(str(p)))   
 
 
 #### Subcycle function (in seconds replace with minutes)
 def subcycle(dur, message):
-		t0 = dt.now()
-		ti = dt.now()
-		while ti < t0 + td(minutes=dur):
-		#while ti < t0 + td(seconds=dur): # for testing
-			ti = dt.now()
-			SameLinePrint(t0 + td(minutes=dur) - ti)
-			#SameLinePrint(t0 + td(seconds=dur) - ti)
-		
-		print(ti.time())
-		print(message)
-		winsound.Beep(550, 750)
+    t0 = dt.now()
+    ti = dt.now()
+    while ti < t0 + td(minutes=dur):
+    #while ti < t0 + td(seconds=dur): # for testing
+        ti = dt.now()
+        SameLinePrint(t0 + td(minutes=dur) - ti)
+        #SameLinePrint(t0 + td(seconds=dur) - ti)
+
+    print(ti.time())
+    print(message)
+    winsound.Beep(550, 750)
 
 
 #----------------------------------------------------------------------------#
@@ -80,35 +80,35 @@ work_gb = input('Shall we start working? (Y/n) ').strip().lower()
 cycle_count = 0
 
 while work_gb not in start_ansYN:
-	print("Sorry, I didn't get that.")
-	print(work_gb)
+    print("Sorry, I didn't get that.")
+    print(work_gb)
 
-	start_gb = input('Shall we start working now? (Y/n) ')
+    work_gb = input('Shall we start working now? (Y/n) ')
 
 while work_gb in start_ansY:
-	print("Start working!")
-		# Repeat work subcycle and break 3x
-	for i in range(0,3):
-		# Work cycle
-		subcycle(Wcy_dur, Wcy_mes1)
-			# Break cycle
-		subcycle(Bcy_dur, Bcy_mes)
+    print("Start working!")
+    	# Repeat work subcycle and break 3x
+    for i in range(0,3):
+    	# Work cycle
+        subcycle(Wcy_dur, Wcy_mes1)
+    	    # Break cycle
+        subcycle(Bcy_dur, Bcy_mes)
 
-	# Last work cycle before long break
-	subcycle(Wcy_dur, Wcy_mes2)
-	# Long break!
-	subcycle(LBcy_dur, LBcy_mes)
+    # Last work cycle before long break
+    subcycle(Wcy_dur, Wcy_mes2)
+    # Long break!
+    subcycle(LBcy_dur, LBcy_mes)
 	
-	# Show cycle count
-	cycle_count += 1
-	if cycle_count == 1:
-		print("Congratulations! You have finished", format(cycle_count), "cycle.")
-	else:
-		print("Congratulations!", format(cycle_count), "cycles now!")
+    # Show cycle count
+    cycle_count += 1
+    if cycle_count == 1:
+        print("Congratulations! You have finished", format(cycle_count), "cycle.")
+    else:
+        print("Congratulations!", format(cycle_count), "cycles now!")
 
 	
-	print(cycle_count)
-	work_gb = input('Shall we continue working? (Y/n) ').strip().lower()
+    print(cycle_count)
+    work_gb = input('Shall we continue working? (Y/n) ').strip().lower()
 
 
 print("Ok, have fun!")
