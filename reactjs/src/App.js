@@ -1,48 +1,42 @@
 import './App.css';
+
+import { useState } from 'react'
 import Timer from './components/Timer.js'
-// import { useTimer } from 'react-timer-hook';
-
-
-// function MyTimer({ expiryTimestamp }) {
-//   const {
-//     seconds,
-//     minutes,
-//     hours,
-//     days,
-//     isRunning,
-//     start,
-//     pause,
-//     resume,
-//     restart,
-//   } = useTimer({ expiryTimestamp, onExpire: () => console.warn('onExpire called') });
-
-
-//   return (
-//     <div style={{textAlign: 'center'}}>
-//       <h1>react-timer-hook </h1>
-//       <p>Timer Demo</p>
-//       <div style={{fontSize: '100px'}}>
-//         <span>{days}</span>:<span>{hours}</span>:<span>{minutes}</span>:<span>{seconds}</span>
-//       </div>
-//       <p>{isRunning ? 'Running' : 'Not running'}</p>
-//       <button onClick={start}>Start</button>
-//       <button onClick={pause}>Pause</button>
-//       <button onClick={resume}>Resume</button>
-//       <button onClick={() => {
-//         // Restarts to 5 minutes timer
-//         const time = new Date();
-//         time.setSeconds(time.getSeconds() + 300);
-//         restart(time)
-//       }}>Restart</button>
-//     </div>
-//   );
-// }
 
 
 
 function App() {
+  
+  //---------------------------------------------------------------------------
+  // Default state
+  
+  // Set object of cycles
+  const [subCycles, setSubCycles] = useState([
+    {
+      id: 1,
+      text: 'Work',
+      time: 1200
+    },
+    {
+      id: 1,
+      text: 'Break',
+      time: 300
+  },
+  ])
+  
+  // Current time
   const time = new Date();
-  time.setSeconds(time.getSeconds() + 600); // 10 minutes timer
+  
+  //Current cycle
+  // const current_cycle = Object.values(subCycles)[0].time
+  const current_cycle = 10
+
+  
+  time.setSeconds(time.getSeconds() + current_cycle); // 10 minutes timer
+  
+  console.log(current_cycle)
+  //---------------------------------------------------------------------------
+  // App UI
   
   return (
     <div className="App">

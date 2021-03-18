@@ -1,8 +1,17 @@
 import { useTimer } from 'react-timer-hook';
+import { useState } from 'react'
 
 
 const Timer = ({ expiryTimestamp }) => {
-    const {
+  
+  let cycle_id = 1;
+  const nextCycle = () => {
+    console.warn('onExpire called');
+    cycle_id = cycle_id++;
+
+  }
+  
+  const {
         seconds,
         minutes,
         hours,
@@ -12,8 +21,25 @@ const Timer = ({ expiryTimestamp }) => {
         pause,
         resume,
         restart,
-      } = useTimer({ expiryTimestamp, onExpire: () => console.warn('onExpire called') });
+      } = useTimer({ expiryTimestamp, onExpire: () => nextCycle() });
+      
     
+    // Set object of cycles
+    const [subCycles, setSubCycles] = useState([
+      {
+        id: 1,
+        text: 'Work',
+        time: 1200
+      },
+      {
+        id: 1,
+        text: 'Break',
+        time: 300
+    },
+    ])
+    console.log(cycle_id)
+      
+      
       return (
         <div style={{textAlign: 'center'}}>
           <div style={{fontSize: '100px'}}>
