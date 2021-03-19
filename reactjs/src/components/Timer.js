@@ -23,11 +23,11 @@ const Timer = ({ expiryTimestamp, cycles }) => {
     handleIncrement()
     
     // Update cycle
-    const current_count = count
-    const sub_cycle = cycles.filter( (cycle) => cycle.id === current_count )[0]
+    // const current_count = count
+    // const sub_cycle = cycles.filter( (cycle) => cycle.id === current_count )[0]
     
-    console.log(count);
-    console.log(sub_cycle.time);
+    // console.log(count);
+    // console.log(sub_cycle.time);
   }
   
   const {
@@ -41,12 +41,19 @@ const Timer = ({ expiryTimestamp, cycles }) => {
         resume,
         restart,
       } = useTimer({ expiryTimestamp, onExpire: () => nextCycle() });
-    // } = useTimer({ foo, onExpire: () => nextCycle() });
-      
+  //------------------------------------------------------
+  // UI
+  
+  function padLeadingZeros(num, size) {
+    var s = num+"";
+    while (s.length < 2) s = "0" + s;
+    return s;
+}
+  
   return (
     <div style={{textAlign: 'center'}}>
       <div style={{fontSize: '100px'}}>
-        <span>{days}</span>:<span>{hours}</span>:<span>{minutes}</span>:<span>{seconds}</span>
+        <span>{padLeadingZeros(minutes)}</span>:<span>{padLeadingZeros(seconds)}</span>
       </div>
       <p>{isRunning ? 'Running' : 'Not running'}</p>
       <button onClick={start}>Start</button>
