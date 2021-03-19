@@ -1,40 +1,38 @@
 import './App.css';
+import React, { useState } from "react";
 
-import { useState } from 'react'
-import Timer from './components/Timer.js'
-
-
+import Timer from './components/Timer.js';
 
 function App() {
   
   //---------------------------------------------------------------------------
   // Default state
   
-  // Set object of cycles
-  const [subCycles, setSubCycles] = useState([
-    {
-      id: 1,
-      text: 'Work',
-      time: 1200
-    },
-    {
-      id: 1,
-      text: 'Break',
-      time: 300
-  },
-  ])
-  
   // Current time
   const time = new Date();
   
   //Current cycle
   // const current_cycle = Object.values(subCycles)[0].time
-  const current_cycle = 10
+  const current_cycle = 10  
+  time.setSeconds(time.getSeconds() + current_cycle); 
+  
+  // Default state
 
+  const [cycles, setCycles] = useState([
+    {
+      id: 1,
+      text: 'Work',
+      time: 25,
+    },
+    {
+      id: 2,
+      text: 'Rest',
+      time: 5,
+    },
+  ])
   
-  time.setSeconds(time.getSeconds() + current_cycle); // 10 minutes timer
   
-  console.log(current_cycle)
+  // console.log(current_cycle)
   //---------------------------------------------------------------------------
   // App UI
   
@@ -42,10 +40,7 @@ function App() {
     <div className="App">
       <header className="App-header">
         <h1>Pomodoro Tabajara</h1>
-        <Timer expiryTimestamp={time} />
-        {/* <div>
-          <MyTimer expiryTimestamp={time} />
-        </div> */}
+        <Timer expiryTimestamp={time} cycles={cycles}/>
       </header>
     </div>
   );
