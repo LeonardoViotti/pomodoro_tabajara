@@ -1,3 +1,15 @@
+
+/*
+TO DO:
+ - Find a way to run through the cycles list
+ - Generalize what happens when the subcycle ends.
+
+*/
+
+
+//---------------------------------------------------------------------------
+// Settings
+
 import './App.css';
 import React, { useState } from "react";
 
@@ -19,20 +31,28 @@ function App() {
   time.setSeconds(time.getSeconds() + current_cycle); 
   
   // Default state
-
   const [cycles, setCycles] = useState([
     {
       id: 1,
       text: 'Work',
-      time: 25,
+      time: 1,
     },
     {
       id: 2,
-      text: 'Rest',
-      time: 5,
+      text: 'Break',
+      time: 2,
     },
-  ])
+    {
+      id: 3,
+      text: 'Long break',
+      time: 15,
+    },
+  ]);
   
+  // Default list of cycles
+  const [cycleList, setCycleList] = useState([1,2,1,2,3])
+  
+  console.log(cycleList[1])
   
   // console.log(current_cycle)
   //---------------------------------------------------------------------------

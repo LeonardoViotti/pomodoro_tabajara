@@ -1,24 +1,19 @@
-// https://github.com/alekspopovic/pomodoro/blob/main/pomodoro/src/Pomodoro.js
-// https://www.youtube.com/watch?v=9z1qBcFwdXg
+
+
 
 import React, { useState, useEffect } from "react";
 
 // Timer function
 const Timer = ({ cycles }) => {
-    
-    // Draft state from App.js
-    // Counter to track what cycle is on.
-    const [count, setCount] = useState(1);  // Set the initial count state to 1
 
-    // Update cycle
-    const current_count = count
-    const sub_cycle = cycles.filter( (cycle) => cycle.id === current_count )[0]
+    // Set work cycle
+    const work_cycle = cycles.filter( (cycle) => cycle.id === 1 )[0];
+    const break_cycle = cycles.filter( (cycle) => cycle.id === 2 )[0];
     
-    // console.log(count);
-    // console.log(sub_cycle.time);
-    
-    const [minutes, setMinutes] = useState(0);
-    const [seconds, setSeconds] = useState(5);
+    // Set timer varibles
+    // const [minutes, setMinutes] = useState(0);
+    const [minutes, setMinutes] = useState(work_cycle.time);
+    const [seconds, setSeconds] = useState(0);
     const [displayMessage, setDisplayMessage] = useState(false);
     
     // Manually programed timer that updates every 1000 milliseconds
@@ -26,18 +21,22 @@ const Timer = ({ cycles }) => {
       let interval = setInterval(() => {
         clearInterval(interval);
         
+        // When minutes flip
         if (seconds === 0) {
+          // Regular minutes decrease
           if (minutes !== 0) {
             setSeconds(59);
             setMinutes(minutes - 1);
+          // Sub cycle flip 
           } else {
-            let minutes = displayMessage ? 24 : 4;
+            let minutes = displayMessage ? work_cycle.time-1 : break_cycle.time-1;
             let seconds = 59;
             
             setSeconds(seconds);
             setMinutes(minutes);
             setDisplayMessage(!displayMessage);
           }
+        // Regular second decrease
         } else {
           setSeconds(seconds - 1);
         }
@@ -51,7 +50,7 @@ const Timer = ({ cycles }) => {
     return (
       <div className="pomodoro">
         <div className="message">
-          {displayMessage && <div>Break time! New session starts in:</div>}
+          {displayMessage && <div> Break time! New session starts in:</div>}
         </div>
         <div className="timer">
           {timerMinutes}:{timerSeconds}
@@ -61,3 +60,8 @@ const Timer = ({ cycles }) => {
 }   
 
 export default Timer
+
+
+// Reference: 
+// https://github.com/alekspopovic/pomodoro/blob/main/pomodoro/src/Pomodoro.js
+// https://www.youtube.com/watch?v=9z1qBcFwdXg
