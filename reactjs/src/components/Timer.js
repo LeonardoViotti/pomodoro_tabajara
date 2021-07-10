@@ -4,24 +4,29 @@ import { useState } from 'react'
 
 const Timer = ({ expiryTimestamp, cycles }) => {
 
-  // Counter to track what cycle is on.
-  const [count, setCount] = useState(1);  // Set the initial count state to 1
+  // // Counter to track what cycle is on.
+  // const [count, setCount] = useState(1);  // Set the initial count state to 1
   
-  // Create handleIncrement event handler
-  const handleIncrement = () => {
-    setCount(prevCount => prevCount + 1);
-  };
+  // // Create handleIncrement event handler
+  // const handleIncrement = () => {
+  //   setCount(prevCount => prevCount + 1);
+  // };
+  
+  // Cycle duration state
+  // const [duration, setDuration] = useState();
+  
   
   // Set initial timer
-  // expiryTimestamp = expiryTimestamp.setSeconds(expiryTimestamp.getSeconds() + 20)
+  // expiryTimestamp = expiryTimestamp.setSeconds(expiryTimestamp.getSeconds() + )
   
   // End of the cycle
   const nextCycle = () => {
     console.warn('onExpire called');
     
     // Add 1 to the counter
-    handleIncrement()
+    // handleIncrement()
     
+    expiryTimestamp = expiryTimestamp.setSeconds(expiryTimestamp.getSeconds() + 13)
     // Update cycle
     // const current_count = count
     // const sub_cycle = cycles.filter( (cycle) => cycle.id === current_count )[0]
@@ -33,8 +38,8 @@ const Timer = ({ expiryTimestamp, cycles }) => {
   const {
         seconds,
         minutes,
-        hours,
-        days,
+        // hours,
+        // days,
         isRunning,
         start,
         pause,
