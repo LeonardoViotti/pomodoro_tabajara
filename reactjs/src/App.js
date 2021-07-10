@@ -1,7 +1,9 @@
 import './App.css';
 import React, { useState } from "react";
 
-import Timer from './components/Timer.js';
+// import Timer from './components/Timer.js';
+import Timer from './components/Timer2.js';
+
 
 function App() {
   
@@ -40,7 +42,9 @@ function App() {
     <div className="App">
       <header className="App-header">
         <h1>Pomodoro Tabajara</h1>
-        <Timer expiryTimestamp={time} cycles={cycles}/>
+        {/* <Timer expiryTimestamp={time} cycles={cycles}/> */}
+        <Timer cycles={cycles}/>
+
       </header>
     </div>
   );
