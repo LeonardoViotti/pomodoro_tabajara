@@ -32,7 +32,7 @@ export const App = ({ }) => {
   time.setSeconds(time.getSeconds() + current_cycle); 
   
   // Default state
-  const [cycles, setCycles] = useState([
+  const cycles = [
     {
       id: 1,
       text: 'Work',
@@ -48,7 +48,7 @@ export const App = ({ }) => {
       text: 'Long break',
       time: 15,
     },
-  ]);
+  ];
   
   // Default list of cycles
   const [cycleList, setCycleList] = useState([1,2,1,2,3])
