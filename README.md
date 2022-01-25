@@ -1,1 +1,3 @@
-# pomodoro_tabajara
+# Pomodoro Tabajara
+
+Toy timer project
