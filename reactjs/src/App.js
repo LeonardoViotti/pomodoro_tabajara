@@ -17,7 +17,8 @@ import React, { useState } from "react";
 import Timer from './components/Timer2.js';
 
 
-function App() {
+export const App = ({ }) => {
+
   
   //---------------------------------------------------------------------------
   // Default state
@@ -69,5 +70,3 @@ function App() {
     </div>
   );
 }
-
-export default App;

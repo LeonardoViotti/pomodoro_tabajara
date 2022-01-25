@@ -18,7 +18,7 @@ const Timer = ({ cycles }) => {
     
     // Manually programed timer that updates every 1000 milliseconds
     useEffect(() => {
-      let interval = setInterval(() => {
+      const interval = setInterval(() => {
         clearInterval(interval);
         
         // When minutes flip
@@ -29,8 +29,8 @@ const Timer = ({ cycles }) => {
             setMinutes(minutes - 1);
           // Sub cycle flip 
           } else {
-            let minutes = displayMessage ? work_cycle.time-1 : break_cycle.time-1;
-            let seconds = 59;
+            const minutes = displayMessage ? work_cycle.time-1 : break_cycle.time-1;
+            const seconds = 59;
             
             setSeconds(seconds);
             setMinutes(minutes);
